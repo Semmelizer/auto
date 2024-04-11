@@ -1,0 +1,29 @@
+{
+  "csv-preview.separator": "\\;",
+  "files.eol": "\n",
+  "files.associations": {
+    "*.csv": "csv (semicolon)"
+},
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#a19a36",
+    "activityBar.background": "#a19a36",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#422c74",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#a19a36",
+    "statusBar.background": "#a19a36",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#a19a36",
+    "statusBarItem.remoteBackground": "#a19a36",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#a19a36",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#a19a36",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#215732",
+  "asciidoc.antora.enableAntoraSupport": false
+}
