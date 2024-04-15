@@ -6,6 +6,6 @@
 
 - service
 - REST
-- GraphQL
+- GraphQL => AutoQueryResolver @ResolveField('rabatt')
 - DB
 - Dannach Pfade anpassen
