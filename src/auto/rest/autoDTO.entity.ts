@@ -1,4 +1,4 @@
-/* eslint-disable max-classes-per-file, @typescript-eslint/no-magic-numbers */
+/* eslint-disable max-classes-per-file */
 
 import {
     IsArray,
@@ -21,7 +21,7 @@ import { ZubehoerDTO } from './zubehoerDTO.entity.js';
 export const MAX_RATING = 5;
 
 /**
- * Entity-Klasse für Bücher ohne TypeORM und ohne Referenzen.
+ * Entity-Klasse für Autos ohne TypeORM und ohne Referenzen.
  */
 export class AutoDtoOhneRef {
     @ApiProperty({ example: 'W0L000051T2123456', type: String })
@@ -54,7 +54,7 @@ export class AutoDtoOhneRef {
 }
 
 /**
- * Entity-Klasse für Bücher ohne TypeORM.
+ * Entity-Klasse für Autos ohne TypeORM.
  */
 export class AutoDTO extends AutoDtoOhneRef {
     @ValidateNested()
@@ -71,4 +71,4 @@ export class AutoDTO extends AutoDtoOhneRef {
 
     // ZubehoerDTO
 }
-/* eslint-enable max-classes-per-file, @typescript-eslint/no-magic-numbers */
+/* eslint-enable max-classes-per-file */
