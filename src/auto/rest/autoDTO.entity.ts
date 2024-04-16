@@ -24,7 +24,7 @@ export const MAX_RATING = 5;
 /**
  * Entity-Klasse für Bücher ohne TypeORM und ohne Referenzen.
  */
-export class BuchDtoOhneRef {
+export class AutoDtoOhneRef {
     @IsISBN(13)
     @ApiProperty({ example: '978-0-007-00644-1', type: String })
     readonly isbn!: string;
@@ -58,11 +58,11 @@ export class BuchDtoOhneRef {
 /**
  * Entity-Klasse für Bücher ohne TypeORM.
  */
-export class BuchDTO extends BuchDtoOhneRef {
+export class AutoDTO extends AutoDtoOhneRef {
     @ValidateNested()
     @Type(() => BezeichnungDTO)
     @ApiProperty({ type: BezeichnungDTO })
-    readonly titel!: BezeichnungDTO; // NOSONAR
+    readonly bezeichnung!: BezeichnungDTO; // NOSONAR
 
     @IsOptional()
     @IsArray()
