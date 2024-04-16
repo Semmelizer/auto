@@ -1,0 +1,61 @@
+' Preview durch <Alt>d
+
+@startuml Entity
+
+package typeorm {
+  class "@Entity" as Entity
+  hide Entity circle
+  class "@Column" as Column
+  hide Column circle
+  class "@PrimaryColumn" as PrimaryColumn
+  hide PrimaryColumn circle
+  class "@OneToMany" as OneToMany
+  hide OneToMany circle
+  class "@JoinColumn" as JoinColumn
+  hide JoinColumn circle
+  class "@ManyToOne" as ManyToOne
+  hide ManyToOne circle
+  class "@CreateDateColumn" as CreateDateColumn
+  hide CreateDateColumn circle
+  class "@UpdateDateColumn" as UpdateDateColumn
+  hide UpdateDateColumn circle
+}
+
+package auto.entity {
+  class "type AutoArt = 'SUV' | 'LIMOUSINE'" as AutoArt
+  hide AutoArt circle
+
+  class Auto <<entity>> <<@Entity>> {
+    @Column() @PrimaryColumn() readonly id: number
+    @Column() readonly version: number
+    @Column() readonly fahrgestellnummer: string
+    @Column() readonly art: AutoArt
+    @Column() readonly preis: number
+    @Column() readonly lieferbar: boolean
+    @Column() readonly datum: Date
+    @CreateDateColumn() readonly erzeugt: Date
+    @UpdateDateColumn() readonly aktualisiert: Date
+  }
+
+  class Bezeichnung <<entity>> <<@Entity>> {
+    @Column() @PrimaryColumn() readonly id: number
+    @Column() readonly bezeichnung: string
+    @Column() readonly zusatz?: string
+  }
+
+  class Zubehoer <<entity>> <<@Entity>> {
+    @Column() @PrimaryColumn() readonly id: number
+    @Column() readonly name: string
+    @Column() readonly beschreibung?: string
+  }
+
+  Auto *--> "1" Bezeichnung : @OneToOne() \ntitel
+  Auto *--> "*" Zubehoer : @OneToMany() \nabbildungen
+
+  Auto .right.> Entity
+  Auto .right.> AutoArt
+}
+
+hide empty members
+
+@enduml
