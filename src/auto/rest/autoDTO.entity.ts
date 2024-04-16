@@ -3,7 +3,6 @@
 import {
     IsArray,
     IsBoolean,
-    IsISBN,
     IsISO8601,
     IsInt,
     IsOptional,
@@ -25,9 +24,8 @@ export const MAX_RATING = 5;
  * Entity-Klasse für Bücher ohne TypeORM und ohne Referenzen.
  */
 export class AutoDtoOhneRef {
-    @IsISBN(13)
-    @ApiProperty({ example: '978-0-007-00644-1', type: String })
-    readonly isbn!: string;
+    @ApiProperty({ example: 'W0L000051T2123456', type: String })
+    readonly fahrgestellnummer!: string;
 
     @IsInt()
     @Min(0)
