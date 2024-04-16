@@ -1,18 +1,3 @@
-' Copyright (C) 2019 - present Juergen Zimmermann, Hochschule Karlsruhe
-'
-' This program is free software: you can redistribute it and/or modify
-' it under the terms of the GNU General Public License as published by
-' the Free Software Foundation, either version 3 of the License, or
-' (at your option) any later version.
-'
-' This program is distributed in the hope that it will be useful,
-' but WITHOUT ANY WARRANTY; without even the implied warranty of
-' MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-' GNU General Public License for more details.
-'
-' You should have received a copy of the GNU General Public License
-' along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
 ' Preview durch <Alt>d
 
 @startuml Komponenten
@@ -25,12 +10,12 @@ actor GraphQLClient
 node "Nest" {
   [RequestLoggerMiddleware]
 
-  [BuchController]
-  [BuchResolver]
+  [AutoController]
+  [AutoResolver]
 
-  [BuchService]
+  [AutoService]
 
-  [Repository<Buch>]
+  [Repository<Auto>]
 
   [MailService]
 }
@@ -48,10 +33,10 @@ cloud {
     [nodemailer]
 }
 
-database "DB buch" {
-    [Tabelle buch]
-    [Tabelle titel]
-    [Tabelle abbildung]
+database "DB auto" {
+    [Tabelle auto]
+    [Tabelle bezeichnung]
+    [Tabelle zubehoer]
 }
 
 node {
@@ -65,27 +50,25 @@ node {
 RESTClient ~~> [RequestLoggerMiddleware]
 GraphQLClient ~~> [RequestLoggerMiddleware]
 
-[RequestLoggerMiddleware] ~~> [BuchController]
-[RequestLoggerMiddleware] ~~> [BuchResolver]
+[RequestLoggerMiddleware] ~~> [AutoController]
+[RequestLoggerMiddleware] ~~> [AutoResolver]
 
-[BuchController] ..> [BuchService]
-[BuchResolver] ..> [BuchService]
-[BuchService] ..> [Repository<Buch>]
+[AutoController] ..> [AutoService]
+[AutoResolver] ..> [AutoService]
+[AutoService] ..> [Repository<Auto>]
 
-[Repository<Buch>] ~~> [TypeORM]
-[TypeORM] ~~> [Tabelle buch]
-[TypeORM] ~~> [Tabelle titel]
-[TypeORM] ~~> [Tabelle abbildung]
+[Repository<Auto>] ~~> [TypeORM]
+[TypeORM] ~~> [Tabelle auto]
+[TypeORM] ~~> [Tabelle bezeichnung]
+[TypeORM] ~~> [Tabelle zubehoer]
 
-[BuchController] ..> [nest-keycloak-connect]
+[AutoController] ..> [nest-keycloak-connect]
 [nest-keycloak-connect] ~~> [Keycloak]
 
-[BuchService] ..> [MailService]
+[AutoService] ..> [MailService]
 [MailService] ~~> [nodemailer]
 [nodemailer] ~~> [Mailserver]
 
 [MailService] ~[hidden]~> [nest-keycloak-connect]
-
-footer (c) Jürgen Zimmermann
 
 @enduml
